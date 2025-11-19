@@ -50,6 +50,14 @@ awslocal apigateway create-deployment `
     --rest-api-id $restApiId `
     --stage-name dev | Out-Null
 
+# Build the URL
+$apiUrl = "http://localhost:4566/restapis/$restApiId/dev/_user_request_/jokes"
+
+# Save it to a file at project root: .last_api_url
+$projectRoot = Resolve-Path "$PSScriptRoot\.."
+$apiFilePath = Join-Path $projectRoot ".last_api_url"
+$apiUrl | Out-File -FilePath $apiFilePath -Encoding utf8
+
 Write-Host "API ID: $restApiId"
-Write-Host "Example URL:"
-Write-Host "http://localhost:4566/restapis/$restApiId/dev/_user_request_/jokes"
+Write-Host "API URL: $apiUrl"
+Write-Host "Saved to: $apiFilePath"
