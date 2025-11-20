@@ -62,7 +62,7 @@ joke-api-localstack/
 ## 🛠 Setup & Installation
 
 ### 1️⃣ Prerequisites
-
+- Windows OS
 - Python **3.11+**
 - Docker Desktop (running and healthy)
 - LocalStack CLI (`localstack`)
@@ -74,7 +74,7 @@ joke-api-localstack/
 ### 2️⃣ Clone the repository
 
 ```powershell
-git clone https://github.com/<your-username>/joke-api-localstack.git
+git clone https://github.com/maxkrakauer/joke-api-localstack.git
 cd joke-api-localstack
 ```
 
@@ -83,6 +83,9 @@ cd joke-api-localstack
 ### 3️⃣ Install dependencies
 
 ```powershell
+pip install localstack awscli awscli-local
+aws configure --profile localstack
+set AWS_PROFILE=localstack
 pip install -r requirements.txt
 ```
 
@@ -91,7 +94,8 @@ pip install -r requirements.txt
 ## 🐳 Run LocalStack
 
 ```powershell
-localstack start
+cd C:\localstack\
+.\localstack start
 ```
 
 Or if running via Docker manually:
